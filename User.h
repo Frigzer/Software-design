@@ -1,13 +1,16 @@
 #ifndef USER_H
 #define USER_H
 
-/**
- * asdaas
- */
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+
 class User {
 
 private:
-	int name;
+	std::string username;
+	std::string password;
 
 protected:
 	void login();
