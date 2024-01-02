@@ -5,16 +5,19 @@ class reservation {
 
 private:
 	int roomNumber;
-	int isParking;
+	bool isParking;
 	int wakeUpService;
-	int isPaid;
-	int isBreakfest;
-	int isDinner;
+	bool isPaid;
+	bool isBreakfest;
+	bool isDinner;
 	int roomPrice;
 	int discount;
-	int isForService;
+	bool isForService;
 
 public:
+	reservation()
+	{};
+
 	void ConfirmReservation();
 
 	void Edit();

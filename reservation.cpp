@@ -1,8 +1,12 @@
 #include "reservation.h"
+reservation::reservation()
+{
+	
+}
 
 void reservation::ConfirmReservation() {
-	// TODO - implement reservation::ConfirmReservation
-	throw "Not yet implemented";
+	reservation* newReservation = new reservation;
+	
 }
 
 void reservation::Edit() {
