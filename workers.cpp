@@ -25,7 +25,7 @@ void workers::setWorkerSalary(std::string newName)
 	name = newName;
 }
 
-void workers::changeIfPaid(bool bool willBePaid)
+void workers::changeIfPaid(bool willBePaid)
 {
 	isPaidThisMont = willBePaid;
 }

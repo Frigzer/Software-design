@@ -21,7 +21,7 @@ public:
 
 	void setWorkerSalary(std::string newName);
 
-	void changeIfPaid(bool bool willBePaid);
+	void changeIfPaid(bool willBePaid);
 
 	void changeReview(std::string newReview);
 };
