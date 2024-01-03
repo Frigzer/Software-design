@@ -3,16 +3,16 @@
 #include <vector>
 using namespace std;
 
-vector<rooms> Rooms;
-
 struct rooms {
     int roomNumber;
     int occupants;
     char roomClass;
     bool isForService;
 
-	void getFromFile();
+    void getFromFile();
     void modifyRooms();
 };
+
+vector<rooms*> Rooms;
 
 #endif
