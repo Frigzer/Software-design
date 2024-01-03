@@ -10,9 +10,13 @@ struct rooms {
     bool isForService;
 
     void getFromFile();
+    void writeToFile();
     void modifyRooms();
 };
 
 vector<rooms*> Rooms;
 
 #endif
+
+
+
