@@ -1,7 +1,12 @@
 #ifndef WORKERS_H
 #define WORKERS_H
 
+#include <fstream>
 #include <iostream>
+#include <string>
+#include <algorithm>
+#include <sstream>
+#include <vector>
 
 class workers {
 
@@ -19,7 +24,15 @@ public:
 
 	std::string getWorkerName();
 
-	void setWorkerSalary(std::string newName);
+	std::string getWorkerRole();
+
+	std::string getWorkerreview();
+
+	bool getIfPaid();
+
+	int getWorkerSalary();
+
+	void setWorkerSalary(int newSalary);
 
 	void changeIfPaid(bool willBePaid);
 

@@ -20,14 +20,34 @@ std::string workers::getWorkerName()
 	return name;
 }
 
-void workers::setWorkerSalary(std::string newName)
+std::string workers::getWorkerRole()
 {
-	name = newName;
+	return role;
+}
+
+std::string workers::getWorkerreview()
+{
+	return workerReview;
+}
+
+bool workers::getIfPaid()
+{
+	return isPaidThisMonth;
+}
+
+int workers::getWorkerSalary()
+{
+	return salary;
+}
+
+void workers::setWorkerSalary(int newSalary)
+{
+	salary = newSalary;
 }
 
 void workers::changeIfPaid(bool willBePaid)
 {
-	isPaidThisMont = willBePaid;
+	isPaidThisMonth = willBePaid;
 }
 
 void workers::changeReview(std::string newReview)
