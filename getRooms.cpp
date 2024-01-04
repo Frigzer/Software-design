@@ -2,6 +2,13 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <algorithm>
+
+bool compareRooms(const rooms* r1, const rooms* r2)
+{
+    return(r1->roomNumber < r2->roomNumber);
+}
+
 void rooms::getFromFile()
 {
     string contents, line;
@@ -71,6 +78,7 @@ void rooms::getFromFile()
 
 void rooms::writeToFile()
 {
+    sort(Rooms.begin(), Rooms.end(), compareRooms);
     fstream file;
     file.open("rooms.txt", ios::out | ios::trunc);
     string text;
@@ -243,9 +251,10 @@ void rooms::modifyRooms()
         cout << endl << "Specify the maximum number of guests: ";
         cin >> newRoom->occupants;
         standard1:
-        cout << "Select standard: Standard     Penthouse     Luxury" << endl;
+        cout << endl << "Select standard: Standard     Penthouse     Luxury" << endl;
         string newStandard;
         cin >> newStandard;
+        cout << endl;
         if (newStandard == "Standard")
         {
             newRoom->roomClass = 'S';
@@ -271,9 +280,7 @@ void rooms::modifyRooms()
         {
             Rooms.clear();
             rooms::getFromFile();
-            int roomToDelete;
-            static bool flag = false;
-            begin1:
+            int roomToDelete;  
             for (int i = 0; i < Rooms.size(); i++)
             {
                 cout << Rooms[i]->roomNumber;
@@ -282,6 +289,8 @@ void rooms::modifyRooms()
                     cout << " - ";
                 }
             }
+        begin1:
+            bool flag = false;
             cout << endl << "which room would you like to remove? ";
             cin >> roomToDelete;
             for (int i = 0; i < Rooms.size(); i++)
@@ -293,7 +302,7 @@ void rooms::modifyRooms()
                     flag = true;
                 }
             }
-            if (flag == true);
+            if (flag == true)
             {
                 Rooms.clear();
                 rooms::getFromFile();
@@ -306,9 +315,11 @@ void rooms::modifyRooms()
                         cout << " - ";
                     }
                 }
+                cout << endl;
             }
-            if (flag == false)
+            else if (flag == false)
             {
+                cout << "There is no room with this number";
                 goto begin1;
             }
         }
@@ -320,4 +331,10 @@ void rooms::modifyRooms()
         cin >> continuation;
     }while (continuation == "Y" || continuation == "y");
 
+}
+
+int main()
+{
+    rooms r;
+    r.modifyRooms();
 }
