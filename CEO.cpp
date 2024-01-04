@@ -1,19 +1,23 @@
 #include "CEO.h"
 
 // Funkcja wczytuj¹ca daty œwi¹t z pliku
-std::vector<std::tm> CEO::readHolidays(const std::string& filename = "holidays.txt") {
+std::vector<std::tm> CEO::readHolidays() {
     std::vector<std::tm> holidays;
-    std::ifstream file(filename);
+    std::ifstream file("holidays.txt");
 
     if (!file.is_open()) {
-        std::cerr << "B³¹d podczas otwierania pliku z datami œwi¹t." << std::endl;
+        std::cout << "B³¹d podczas otwierania pliku z datami œwi¹t." << std::endl;
         return holidays;
     }
 
-    std::tm holidayDate;
-    char delimiter;
-
-    while (file >> std::get_time(&holidayDate, "%Y-%m-%d") >> delimiter) {
+    std::string dateString;
+    while (std::getline(file, dateString)) {
+        std::istringstream iss(dateString);
+        std::tm holidayDate = {};
+        if (!(iss >> std::get_time(&holidayDate, "%Y-%m-%d"))) {
+            std::cout << "B³¹d podczas przetwarzania daty." << std::endl;
+            continue; // Pominiêcie b³êdnej daty
+        }
         holidays.push_back(holidayDate);
     }
 
@@ -23,36 +27,61 @@ std::vector<std::tm> CEO::readHolidays(const std::string& filename = "holidays.t
 
 // Funkcja sprawdzaj¹ca, czy data jest œwiêtem
 bool CEO::isHoliday(const std::tm& date, const std::vector<std::tm>& holidays) {
-    auto it = std::find(holidays.begin(), holidays.end(), date);
-    return it != holidays.end();
+    for (auto i : holidays)
+    {
+        if (i.tm_year == date.tm_year && i.tm_mday == date.tm_mday && i.tm_mon == date.tm_mon)
+            return true;
+
+    }
+    return false;
+   
 }
 
-float CEO::setPrices(const std::tm& date) {
+float CEO::setPrices(const std::string& dateStr) {
 
+    //return 2;
 	// Wczytanie dat œwi¹t z pliku
-	std::vector<std::tm> holidays = readHolidays("holidays.txt");
+	std::vector<std::tm> holidays = readHolidays();
 
-	//Domyœlne ceny
-	float base_price = 100.0;
-	float weekend_price = 120.0;
-	float holiday_price = 150.0;
+    std::tm date = {};
+    std::istringstream iss(dateStr);
+    char delimiter;
+    if (!(iss >> date.tm_year >> delimiter >> date.tm_mon >> delimiter >> date.tm_mday) || delimiter != '-') {
+        std::cout << "B³¹d podczas przetwarzania daty." << std::endl;
+        return -1.0; // Zwracamy wartoœæ ujemn¹ jako sygna³ b³êdu
+    }
 
-	//Sprawdzenie, czy jest to weekend
-	bool is_weekend = (date.tm_wday == 0 || date.tm_wday==6);
+    // Korekta roku i miesi¹ca, poniewa¿ std::tm oczekuje, ¿e rok to rok od 1900, a miesi¹ce s¹ numerowane od 0
+    date.tm_year -= 1900;
+    date.tm_mon--;
+    std::mktime(&date);
 
-	bool is_holiday = isHoliday(date, holidays);
+    // Domyœlne ceny
+    float base_price = 100.0;
+    float weekend_price = 120.0;
+    float holiday_price = 150.0;
 
-	// Ustalanie ceny na podstawie dnia tygodnia
-	float price;
-	if (is_holiday) {
-		price = holiday_price;
-	}
-	else if (is_weekend) {
-		price = weekend_price;
-	}
-	else {
-		price = base_price;
-	}
+    // Sprawdzenie, czy to weekend
+    bool is_weekend = false;
+    if(date.tm_wday == 0 || date.tm_wday == 6) // Niedziela (0) lub sobota (6)
+        is_weekend = true;
+    else
+        is_weekend = false;
 
-	return price;
+    // Sprawdzenie, czy to œwiêto
+    bool is_holiday = isHoliday(date, holidays);
+
+    // Ustalanie ceny na podstawie dnia tygodnia
+    float price;
+    if (is_holiday) {
+        price = holiday_price;
+    }
+    else if (is_weekend) {
+        price = weekend_price;
+    }
+    else {
+        price = base_price;
+    }
+  
+    return price;
 }

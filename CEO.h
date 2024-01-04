@@ -5,18 +5,22 @@
 #include <fstream>
 #include <ctime>
 #include <vector>
-#include <algorithm>
+#include <sstream>
+#include <iomanip>
 
-class CEO : Menager {
+
+#include "Menager.h"
+
+class CEO : public Menager {
 
 	// Funkcja wczytuj¹ca daty œwi¹t z pliku
-	std::vector<std::tm> readHolidays(const std::string& filename);
+	std::vector<std::tm> readHolidays();
 	// Funkcja sprawdzaj¹ca, czy data jest œwiêtem
 	bool isHoliday(const std::tm& date, const std::vector<std::tm>& holidays);
 
 public:
 	//Ustalanie ceny na podstawie podanej daty
-	float setPrices(const std::tm& date);
+	float setPrices(const std::string& dateStr);
 };
 
 #endif
