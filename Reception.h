@@ -3,15 +3,16 @@
 
 #include <iostream>
 #include <vector>
-#include "reservationWrapper.h"
 
-class Reception : User {
+#include "User.h"
+#include "occupancyRegistry.h"
+
+class Reception : public User {
 
 
-	std::vector<reservationWrapper*> worker;
 
 public:
-	void editReservation(int roomNumber, int task);
+	void editReservation(int roomNumber);
 
 	void editWebsite();
 
