@@ -12,8 +12,8 @@ private:
 	std::string username;
 	std::string password;
 
-protected:
-	void login();
+public:
+	bool login();
 };
 
 #endif

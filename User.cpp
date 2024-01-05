@@ -1,6 +1,6 @@
 #include "User.h"
 
-void User::login() {
+bool User::login() {
 
 	// Logowanie do systemu na podstawie podanej nazwy
 	std::cout << "Type your name: "; std::cin >> username;
