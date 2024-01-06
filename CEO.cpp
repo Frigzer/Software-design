@@ -37,9 +37,8 @@ bool CEO::isHoliday(const std::tm& date, const std::vector<std::tm>& holidays) {
    
 }
 
-float CEO::setPrices(const std::string& dateStr) {
+float CEO::setPrices(const std::string& dateStr, char roomType) {
 
-    //return 2;
 	// Wczytanie dat œwi¹t z pliku
 	std::vector<std::tm> holidays = readHolidays();
 
@@ -82,6 +81,16 @@ float CEO::setPrices(const std::string& dateStr) {
     else {
         price = base_price;
     }
-  
-    return price;
+
+    switch (roomType) {
+    case 'S':
+        return price + 100.0; // Cena za standardowy pokój
+    case 'P':
+        return  price + 300.0; // Cena za penthouse
+    case 'L':
+        return  price + 500.0; // Cena za luxury
+    default:
+        std::cout << "Unknown room type!!!" << std::endl;
+        return 0;   // Nieznany typ pokoju
+    }
 }
