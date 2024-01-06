@@ -1,4 +1,4 @@
-#include "occupancy.h"
+#include "occupancyRegistry.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
