@@ -20,6 +20,9 @@ private:
 	// Zmiana opisu pracownika
 	void changeWorkerReview();
 
+	// Usuwa pracownika
+	void deleteWorker();
+
 	bool getFromFile();
 
 	bool writeToFile();
