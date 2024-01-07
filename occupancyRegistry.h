@@ -1,14 +1,17 @@
 #ifndef OCCUPANCYREGISTRY_H
 #define OCCUPANCYREGISTRY_H
+#include <vector>
+using namespace std;
 
-class occupancyRegistry {
-
-private:
-	int reservationCalendar;
-	int occupancyPercentage;
-
-public:
-	void CheckIfFree();
+struct occupancy {
+	vector<bool> isOccupied;
+	vector<int> roomNumber;
+	int date;
+	void readFromFile();
+	void writeToFile();
+	void modifyRegistry(int, int, vector<int>, bool);
 };
+
+static vector<occupancy*> OCCUPANCY;
 
 #endif
