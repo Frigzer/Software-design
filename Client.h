@@ -1,7 +1,9 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-class Client : User {
+#include "User.h"
+
+class Client : public User {
 
 
 public:
