@@ -84,11 +84,11 @@ float CEO::setPrices(const std::string& dateStr, char roomType) {
 
     switch (roomType) {
     case 'S':
-        return price + 100.0; // Cena za standardowy pokój
+        return price + float(100.0); // Cena za standardowy pokój
     case 'P':
-        return  price + 300.0; // Cena za penthouse
+        return  price + float(300.0); // Cena za penthouse
     case 'L':
-        return  price + 500.0; // Cena za luxury
+        return  price + float(500.0); // Cena za luxury
     default:
         std::cout << "Unknown room type!!!" << std::endl;
         return 0;   // Nieznany typ pokoju
