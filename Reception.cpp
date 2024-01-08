@@ -1,16 +1,15 @@
 #include "Reception.h"
 
-void Reception::editReservation(int roomNumber) {
+void Reception::editReservation() {
 
-	int task;
-	std::cout << "What would you like to do? \nCreate new reservation - 1 \nEdit reservation - 2" << std::endl;
-	//if (task == 1)
-		//Create reservation
-	//else if (task == 2)
-		//Edit existing one
-	//else
-		//std::cout << "Wrong task number\n";
-	throw "Not yet implemented";
+	int id;
+	std::cout << "Choose ID of reservation which you like to edit";
+	std::cin >> id;
+	for (auto i : RESERVATION)
+	{
+		if(i==id)
+			RESERVATION.editReservation(RESERVATION);
+	}
 }
 
 void Reception::editWebsite() {
@@ -41,8 +40,8 @@ void Reception::accesOccupancyRegistry() {
 			{
 				cout << "!";
 			}
-			std::cout << OCCUPANCY[i]->roomNumber[j] << "/";
+			cout << OCCUPANCY[i]->roomNumber[j] << "/";
 		}
-		std::cout << "|" << OCCUPANCY[i]->date << std::endl;
+		cout << "|" << OCCUPANCY[i]->date << endl;
 	}
 }

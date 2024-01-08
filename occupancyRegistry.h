@@ -10,6 +10,7 @@ struct occupancy {
 	void readFromFile();
 	void writeToFile();
 	void modifyRegistry(int, int, vector<int>, bool);
+	bool checkIfFree(int, int, vector<int>);
 };
 
 static vector<occupancy*> OCCUPANCY;
