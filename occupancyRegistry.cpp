@@ -18,7 +18,7 @@ void occupancy::writeToFile()
     string text;
     for (int i = 0; i < OCCUPANCY.size(); i++)
     {
-        bool flag=0;
+        bool flag = 0;
         for (int j = 0; j < OCCUPANCY[i]->roomNumber.size(); j++)
         {
             if (flag == 1)
@@ -41,7 +41,7 @@ void occupancy::writeToFile()
     file.close();
 }
 
-void occupancy::readFromFile() 
+void occupancy::readFromFile()
 {
     OCCUPANCY.clear();
     string contents, line;
@@ -53,8 +53,8 @@ void occupancy::readFromFile()
         {
             string num;
             string date;
-            bool occupied=false;
-            bool flag=false;
+            bool occupied = false;
+            bool flag = false;
             occupancy* newNode = new occupancy;
             for (int i = 0; i < line.size(); i++)
             {
@@ -104,11 +104,11 @@ void occupancy::readFromFile()
 
                     }
                 }
-                
+
             }
             newNode->date = stoi(date);
             OCCUPANCY.push_back(newNode);
-           
+
         }
     }
     file.close();
@@ -140,6 +140,28 @@ void occupancy::modifyRegistry(int checkIn, int checkOut, vector<int>rooms, bool
     }
     writeToFile();
 }
+
+bool occupancy::checkIfFree(int checkIn, int checkOut, vector<int> rooms)
+{
+    readFromFile()
+        int index;
+    index = (checkIn - OCCUPANCY[0]->date);
+    for (int i = index; i <= checkOut - checkIn + index; i++)
+    {
+        for (int j = 0; j < rooms.size(); j++)
+        {
+            for (int k = 0; k < OCCUPANCY[i]->roomNumber.size(); k++)
+            {
+                if (rooms[j] == OCCUPANCY[i]->roomNumber[k] && OCCUPANCY[i]->isOccupied[k] == true)
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 void print()
 {
     for (int i = 0; i < OCCUPANCY.size(); i++)
