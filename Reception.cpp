@@ -14,32 +14,35 @@ void Reception::editReservation(int roomNumber) {
 }
 
 void Reception::editWebsite() {
+	std::string newEvent;
+	std::cout << "Adding new event: ";
+
+	website.eventCalendar.push_back(newEvent);
 
 	// Tylko pingujemy "stronê" i sprawdzamy czy jest po³¹czenie
+	/*
 	int x = system("ping 127.0.0.1");
 	if (x == 0) {
 		std::cout << "success";
 	}
 	else {
 		std::cout << "failed";
-	}
+	}*/
 }
 
 void Reception::accesOccupancyRegistry() {
 
-	occupancyRegistry registry;
-
-	int task;
-	std::cout << "What would you like to do? \nDisplay reservation calendar - 1 \nShow occupancy percentage - 2\nCheck if free space - 3" << std::endl;
-	std::cin >> task;
-	if (task == 1)
-		throw "Not yet implemented";//Zwiazne ze zmienna reservationCalendar??
-	else if (task == 2)
-		throw "Not yet implemented";//Zwiazane ze zmienna occupancyPercentage??
-	else if (task == 3)
-		registry.CheckIfFree();
-	else
-		std::cout << "Wrong task number" << std::endl;
 	
-
+	for (int i = 0; i < OCCUPANCY.size(); i++)
+	{
+		for (int j = 0; j < OCCUPANCY[i]->roomNumber.size(); j++)
+		{
+			if (OCCUPANCY[i]->isOccupied[j] == true)
+			{
+				cout << "!";
+			}
+			std::cout << OCCUPANCY[i]->roomNumber[j] << "/";
+		}
+		std::cout << "|" << OCCUPANCY[i]->date << std::endl;
+	}
 }

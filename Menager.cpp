@@ -156,6 +156,10 @@ void Menager::menageWorkers()
 
 void Menager::editWebpage() {
 
+	std::cout << "Changing hotel info: ";
+	std::cin >> website.hotelInfo;
+
+	/*
 	// Tylko pingujemy "stronê" i sprawdzamy czy jest po³¹czenie
 	int x = system("ping 127.0.0.1");
 	if (x == 0) {
@@ -163,5 +167,5 @@ void Menager::editWebpage() {
 	}
 	else {
 		std::cout << "failed";
-	}
+	}*/
 }

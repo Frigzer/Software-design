@@ -6,6 +6,7 @@
 
 #include "User.h"
 #include "occupancyRegistry.h"
+#include "websiteData.h"
 
 class Reception : public User {
 

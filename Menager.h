@@ -6,6 +6,7 @@
 #include "workers.h"
 
 #include "Reception.h"
+#include "websiteData.h"
 
 class Menager : public Reception {
 

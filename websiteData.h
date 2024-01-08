@@ -1,11 +1,16 @@
 #ifndef WEBSITEDATA_H
 #define WEBSITEDATA_H
 
+#include <iostream>
+#include <vector>
+
 class websiteData {
 
-private:
-	int eventCalendar;
-	int hotelInfo;
+public:
+	std::vector<std::string> eventCalendar;
+	std::string hotelInfo;
 };
+
+static websiteData website;
 
 #endif
