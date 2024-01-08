@@ -1,7 +1,7 @@
 Pioter - reservation, resrevationWraper, MakeReservation, , occupancy registry
 
-Adam - User, Client, Reception, Menager, CEO
+Adam - User, Client, Reception, Menager, CEO, workers
 
-Radek - workers, websiteData
+Radek -  websiteData
 
 predictPrices do ogarniecia razem
