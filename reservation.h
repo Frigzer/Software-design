@@ -1,26 +1,37 @@
 #ifndef RESERVATION_H
 #define RESERVATION_H
+#include <vector>
+#include <string>
 
-class reservation {
+using namespace std;
 
-private:
-	int roomNumber;
+struct reservation {
+	int ID;
+	std::vector<int>roomNumber;
+	int checkIn;
+	int checkOut;
 	bool isParking;
 	int wakeUpService;
 	bool isPaid;
 	bool isBreakfest;
 	bool isDinner;
-	int roomPrice;
+	int price;
 	int discount;
-	bool isForService;
+	bool isCanceled;
+	reservation* readOneFromFile(int);
+	void writeToFile(reservation);
 
-public:
+	std::string readFromFile(int);
+
 	reservation()
 	{};
 
 	void ConfirmReservation();
 
-	void Edit();
+	void Edit(reservation);
 };
 
+std::vector <reservation*> RESERVATION;
+
 #endif
+
