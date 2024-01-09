@@ -4,23 +4,13 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
-int reservation::generateID(reservation  r)
-{
-	string ID;
-	ID += to_string(r.checkIn);
-	ID += to_string(r.roomNumber[0]);
-	int iID;
-	iID = stoi(ID);
-	return iID;
-}
 
 void reservation::writeToFile(reservation r)
 {
 	occupancy o;
 	if (readOneFromFile(r.ID) == NULL)
 	{
-		if(o.checkIfFree(r.checkIn, r.checkOut, r.roomNumber))
-		{
+
 			fstream file;
 			string text;
 			text += "\n";
@@ -29,7 +19,7 @@ void reservation::writeToFile(reservation r)
 			file.open("RESERVATIONS.txt", ios::app);
 			for (int i = 0; i < r.roomNumber.size(); i++)
 			{
-				text += to_string(roomNumber[i]);
+				text += to_string(r.roomNumber[i]);
 				text += "/";
 			}
 			text += "\n";
@@ -56,17 +46,14 @@ void reservation::writeToFile(reservation r)
 			file << text;
 			file.close();
 			o.modifyRegistry(r.checkIn, r.checkOut, r.roomNumber, 1);
-		}
-		else
-		{
-			cout << "Selected rooms are already occupied!" << endl;
-		}
+		
 	}
 	else
 	{
 		cout << "Reservation with this ID already exists" << endl;
 	}
 }
+
 void reservation::Edit(reservation r)
 {
 	string text;
@@ -284,10 +271,8 @@ reservation* reservation::readOneFromFile(int ID)
 		}
 
 		return NULL;
-
-		file.close();
-
 	}
+	file.close();
 }
 string reservation::readFromFile(int ID)
 {
@@ -323,5 +308,4 @@ string reservation::readFromFile(int ID)
 	file.close();
 	return contents;
 }
-
 
