@@ -5,14 +5,14 @@ using namespace std;
 
 
 struct rooms {
-    int roomNumber;
-    int occupants;
-    char roomClass;
-    bool isForService;
+	int roomNumber;
+	int occupants;
+	string roomClass;
+	bool isForService;
 
-    void getFromFile();
-    void writeToFile();
-    void modifyRooms();
+	void getFromFile();
+	void writeToFile();
+	void modifyRooms();
 
 };
 bool compareRooms(const rooms*, const rooms*);
