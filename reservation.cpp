@@ -4,6 +4,16 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
+int reservation::generateID(reservation  r)
+{
+	string ID;
+	ID += to_string(r.checkIn);
+	ID += to_string(r.roomNumber[0]);
+	int iID;
+	iID = stoi(ID);
+	return iID;
+}
+
 void reservation::writeToFile(reservation r)
 {
 	occupancy o;
