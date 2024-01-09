@@ -34,7 +34,7 @@ void rooms::getFromFile()
 				switch (flag)
 				{
 				case 0:
-					if (isdigit(line[i]))
+					if(isdigit(line[i]))
 					{
 						num += line[i];
 					}
@@ -148,7 +148,7 @@ void rooms::modifyRooms()
 						cout << "Room number " << number << ":" << endl;
 						cout << "Maximum number of guests in the room: " << Rooms[i]->occupants << endl;
 						cout << "Room's standard: ";
-						if (Rooms[i]->roomClass == "S")
+						if(Rooms[i]->roomClass == "S")
 						{
 							cout << "Standard";
 						}
