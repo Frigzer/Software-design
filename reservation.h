@@ -18,7 +18,6 @@ struct reservation {
 	int price;
 	int discount;
 	bool isCanceled;
-	int generateID(reservation);
 	reservation* readOneFromFile(int);
 	void writeToFile(reservation);
 
