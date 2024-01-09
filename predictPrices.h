@@ -1,11 +1,12 @@
 #ifndef PREDICTPRICES_H
 #define PREDICTPRICES_H
 
-class predictPrices {
+#include <sstream>
+
+#include "CEO.h"
 
 
-public:
-	predictPrices(int occupancyPercentage);
-};
+int predictPrices(int date, std::string roomClass);
+
 
 #endif

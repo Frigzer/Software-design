@@ -7,6 +7,8 @@ struct occupancy {
 	vector<bool> isOccupied;
 	vector<int> roomNumber;
 	int date;
+	int numOfDays(int, int);
+
 	void readFromFile();
 	void writeToFile();
 	void modifyRegistry(int, int, vector<int>, bool);

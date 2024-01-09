@@ -2,14 +2,14 @@
 #define CLIENT_H
 
 #include "User.h"
+#include "MakeReservation.h"
+#include "reservation.h"
 
 class Client : public User {
 
 
 public:
 	void AskForReservation();
-
-	void ReceiveConfirmation();
 };
 
 #endif

@@ -7,6 +7,7 @@
 #include "User.h"
 #include "occupancyRegistry.h"
 #include "websiteData.h"
+#include "MakeReservation.h"
 #include "reservation.h"
 
 class Reception : public User {
@@ -14,7 +15,7 @@ class Reception : public User {
 
 
 public:
-	void editReservation();
+	void editReserv();
 
 	void editWebsite();
 

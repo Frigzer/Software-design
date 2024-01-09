@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 
+#include "occupancyRegistry.h"
+
 using namespace std;
 
 struct reservation {
@@ -32,5 +34,4 @@ struct reservation {
 };
 
 static std::vector <reservation*> RESERVATION;
-
 #endif

@@ -1,15 +1,16 @@
 #include "Reception.h"
 
-void Reception::editReservation() {
+void Reception::editReserv() {
 
-	int id;
-	std::cout << "Choose ID of reservation which you like to edit";
-	std::cin >> id;
-	for (auto i : RESERVATION)
-	{
-		if(i==id)
-			RESERVATION.editReservation(RESERVATION);
-	}
+	int task;
+	std::cout << "What do you want to do? 1 - Make new reservation, 2 - Edit existing reservation: ";
+	std::cin >> task;
+	if (task == 1)
+		makeReservation();
+	else if (task == 2)
+		editReservation();
+	else
+		std::cout << "Wrong task number";
 }
 
 void Reception::editWebsite() {

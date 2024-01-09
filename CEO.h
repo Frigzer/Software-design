@@ -20,7 +20,9 @@ class CEO : public Menager {
 
 public:
 	//Ustalanie ceny na podstawie podanej daty
-	float setPrices(const std::string& dateStr, char roomType);
+	int setPrices(const std::string& dateStr, std::string roomType);
 };
+
+static CEO ceo;
 
 #endif
