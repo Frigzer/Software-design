@@ -308,4 +308,3 @@ string reservation::readFromFile(int ID)
 	file.close();
 	return contents;
 }
-
