@@ -9,7 +9,19 @@ bool compare(occupancy* o1, occupancy* o2)
 {
     return(o1->date < o2->date);
 }
-
+int occupancy::numOfDays(int checkIn, int checkOut)
+{
+	readFromFile();
+	int days;
+	for (int i = 0; i < OCCUPANCY.size(); i++)
+	{
+		if (OCCUPANCY[i]->date >= checkIn && OCCUPANCY[i]->date <= checkOut)
+		{
+			days++;
+		}
+	}
+	return days;
+}
 void occupancy::writeToFile()
 {
     sort(OCCUPANCY.begin(), OCCUPANCY.end(), compare);
