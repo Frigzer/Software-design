@@ -20,6 +20,3 @@ bool compareRooms(const rooms*, const rooms*);
 vector<rooms*> Rooms;
 
 #endif
-
-
-

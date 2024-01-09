@@ -495,6 +495,3 @@ void editReservation()
 		res.Edit(newReservation);
 	}
 }
-
-
-
