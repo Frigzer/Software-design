@@ -32,6 +32,5 @@ struct reservation {
 };
 
 std::vector <reservation*> RESERVATION;
-
 #endif
 
