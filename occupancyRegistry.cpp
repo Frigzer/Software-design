@@ -157,23 +157,25 @@ void occupancy::modifyRegistry(int checkIn, int checkOut, vector<int>rooms, bool
 
 bool occupancy::checkIfFree(int checkIn, int checkOut, vector<int> rooms)
 {
-    readFromFile()
-        int index;
-    index = (checkIn - OCCUPANCY[0]->date);
-    for (int i = index; i <= checkOut - checkIn + index; i++)
-    {
-        for (int j = 0; j < rooms.size(); j++)
-        {
-            for (int k = 0; k < OCCUPANCY[i]->roomNumber.size(); k++)
-            {
-                if (rooms[j] == OCCUPANCY[i]->roomNumber[k] && OCCUPANCY[i]->isOccupied[k] == true)
-                {
-                    return false;
-                }
-            }
-        }
-    }
-    return true;
+	readFromFile();
+		int index;
+	index = (checkIn - OCCUPANCY[0]->date);
+	int index2 = numOfDays(checkIn, checkOut) + index;
+
+	for (int i = index; i <= index2; i++)
+	{
+		for (int j = 0; j < rooms.size(); j++)
+		{
+			for (int k = 0; k < OCCUPANCY[i]->roomNumber.size(); k++)
+			{
+				if (rooms[j] == OCCUPANCY[i]->roomNumber[k] && OCCUPANCY[i]->isOccupied[k] == true)
+				{
+					return false;
+				}
+			}
+		}
+	}
+	return true;
 }
 
 void print()
