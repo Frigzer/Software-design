@@ -11,42 +11,42 @@ void reservation::writeToFile(reservation r)
 	if (readOneFromFile(r.ID) == NULL)
 	{
 
-		fstream file;
-		string text;
-		text += "\n";
-		text += to_string(r.ID);
-		text += "\n";
-		file.open("RESERVATIONS.txt", ios::app);
-		for (int i = 0; i < r.roomNumber.size(); i++)
-		{
-			text += to_string(r.roomNumber[i]);
+			fstream file;
+			string text;
+			text += "\n";
+			text += to_string(r.ID);
+			text += "\n";
+			file.open("RESERVATIONS.txt", ios::app);
+			for (int i = 0; i < r.roomNumber.size(); i++)
+			{
+				text += to_string(r.roomNumber[i]);
+				text += "/";
+			}
+			text += "\n";
+			text += to_string(r.checkIn);
+			text += "\n";
+			text += to_string(r.checkOut);
+			text += "\n";
+			text += to_string(r.price);
+			text += "\n";
+			text += to_string(r.discount);
+			text += "\n";
+			text += to_string(r.wakeUpService);
+			text += "\n";
+			text += to_string(r.isPaid);
 			text += "/";
-		}
-		text += "\n";
-		text += to_string(r.checkIn);
-		text += "\n";
-		text += to_string(r.checkOut);
-		text += "\n";
-		text += to_string(r.price);
-		text += "\n";
-		text += to_string(r.discount);
-		text += "\n";
-		text += to_string(r.wakeUpService);
-		text += "\n";
-		text += to_string(r.isPaid);
-		text += "/";
-		text += to_string(r.isBreakfest);
-		text += "/";
-		text += to_string(r.isDinner);
-		text += "/";
-		text += to_string(r.isParking);
-		text += "\n";
-		text += to_string(r.isCanceled);
-		text += "\n";
-		file << text;
-		file.close();
-		o.modifyRegistry(r.checkIn, r.checkOut, r.roomNumber, 1);
-
+			text += to_string(r.isBreakfest);
+			text += "/";
+			text += to_string(r.isDinner);
+			text += "/";
+			text += to_string(r.isParking);
+			text += "\n";
+			text += to_string(r.isCanceled);
+			text += "\n";
+			file << text;
+			file.close();
+			o.modifyRegistry(r.checkIn, r.checkOut, r.roomNumber, 1);
+		
 	}
 	else
 	{
@@ -113,7 +113,7 @@ void print1(reservation* r)
 	{
 		cout << r->roomNumber[i] << "/";
 	}
-	cout << endl << r->checkIn << endl;
+	cout <<endl << r->checkIn << endl;
 	cout << r->checkOut << endl;
 	cout << r->price << endl;
 	cout << r->discount << endl;
@@ -138,8 +138,8 @@ reservation* reservation::readOneFromFile(int ID)
 		while (getline(file, line))
 		{
 			string num;
-
-			if (isdigit(line[0]))
+			
+			if(isdigit(line[0]))
 			{
 				if (ID == stoi(line))
 				{
@@ -258,7 +258,7 @@ reservation* reservation::readOneFromFile(int ID)
 				return newNode;
 			}
 
-			if (switcher >= 1)
+			if(switcher >= 1)
 			{
 				switcher++;
 			}
