@@ -138,9 +138,14 @@ void Menager::menageWorkers()
 {
 	
 	int task;
-	std::cout << "What would you like to do? \n\nAdd new worker - 1 \nChange workers salary - 2 \nChange workers review - 3\nDelete worker - 4" << std::endl;
-	std::cout << "\nInput task number: ";
-	std::cin >> task;
+	cout << "What would you like to do?\n\n";
+	cout << "\t1) Add new worker\n";
+	cout << "\t2) Change workers salary\n";
+	cout << "\t3) Change workers review\n";
+	cout << "\t4) Delete worker\n\n";
+	cout << "5) Return\n";
+	cout << "\nInput task number: ";
+	cin >> task;
 	if (task == 1)
 		addWorker();
 	else if (task == 2)
@@ -149,15 +154,23 @@ void Menager::menageWorkers()
 		changeWorkerReview();
 	else if (task == 4)
 		deleteWorker();
+	else if (task == 5)
+		exit;
 	else
-		std::cout << "Wrong task number" << std::endl;
+	{
+		std::cout << "Wrong task number, Try again" << std::endl;
+		system("pause");
+		system("cls");
+		menageWorkers();
+	}
+		
 	
 }
 
 void Menager::editWebpage() {
 
-	std::cout << "Changing hotel info: ";
-	std::cin >> website.hotelInfo;
+	cout << "Changing hotel info: ";
+	cin >> website.hotelInfo;
 
 	/*
 	// Tylko pingujemy "stronê" i sprawdzamy czy jest po³¹czenie

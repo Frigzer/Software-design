@@ -1,8 +1,6 @@
 #ifndef MENAGER_H
 #define MENAGER_H
 
-#include <iostream>
-#include <vector>
 #include "workers.h"
 
 #include "Reception.h"
