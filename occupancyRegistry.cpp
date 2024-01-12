@@ -43,7 +43,7 @@ void occupancy::writeToFile()
 int occupancy::numOfDays(int checkIn, int checkOut)
 {
 	readFromFile();
-	int days = 0;
+	int days=0;
 	for (int i = 0; i < OCCUPANCY.size(); i++)
 	{
 		if (OCCUPANCY[i]->date >= checkIn && OCCUPANCY[i]->date < checkOut)
@@ -121,7 +121,7 @@ void occupancy::readFromFile()
 			}
 			if (isdigit(date[0]))
 			{
-				newNode->date = stoi(date);
+					newNode->date = stoi(date);
 			}
 			OCCUPANCY.push_back(newNode);
 
@@ -161,7 +161,7 @@ void occupancy::modifyRegistry(int checkIn, int checkOut, vector<int>rooms, bool
 bool occupancy::checkIfFree(int checkIn, int checkOut, vector<int> rooms)
 {
 	readFromFile();
-	int index;
+		int index;
 	index = (checkIn - OCCUPANCY[0]->date);
 	int index2 = numOfDays(checkIn, checkOut) + index;
 

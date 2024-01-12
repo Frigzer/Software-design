@@ -1,6 +1,5 @@
 #ifndef GETROOMS_H
 #define GETROOMS_H
-#include <iostream>
 #include <vector>
 using namespace std;
 
@@ -18,6 +17,6 @@ struct rooms {
 };
 bool compareRooms(const rooms*, const rooms*);
 
-static vector<rooms*> Rooms;
+vector<rooms*> Rooms;
 
 #endif
