@@ -6,14 +6,18 @@
 #include <sstream>
 #include <string>
 
+#include "MakeReservation.h"
+
+using namespace std;
+
 class User {
 
 private:
-	std::string username;
-	std::string password;
+	string username;
+	string password;
 
 public:
-	bool login();
+	bool login(string role);
 };
 
 #endif

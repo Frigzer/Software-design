@@ -1,96 +1,44 @@
 #include "CEO.h"
 
-// Funkcja wczytuj¹ca daty œwi¹t z pliku
-std::vector<std::tm> CEO::readHolidays() {
-    std::vector<std::tm> holidays;
-    std::ifstream file("holidays.txt");
+void CEO::setPrices() {
 
-    if (!file.is_open()) {
-        std::cout << "B³¹d podczas otwierania pliku z datami œwi¹t." << std::endl;
-        return holidays;
-    }
-
-    std::string dateString;
-    while (std::getline(file, dateString)) {
-        std::istringstream iss(dateString);
-        std::tm holidayDate = {};
-        if (!(iss >> std::get_time(&holidayDate, "%Y-%m-%d"))) {
-            std::cout << "B³¹d podczas przetwarzania daty." << std::endl;
-            continue; // Pominiêcie b³êdnej daty
-        }
-        holidays.push_back(holidayDate);
-    }
-
-    file.close();
-    return holidays;
-}
-
-// Funkcja sprawdzaj¹ca, czy data jest œwiêtem
-bool CEO::isHoliday(const std::tm& date, const std::vector<std::tm>& holidays) {
-    for (auto i : holidays)
+    int task=0;
+    while (task != 7)
     {
-        if (i.tm_year == date.tm_year && i.tm_mday == date.tm_mday && i.tm_mon == date.tm_mon)
-            return true;
+        std::cout << "What price would you like to change?\n";
 
+        std::cout << "\n\t1) Default price: " << defaultPrice;
+        std::cout << "\n\t2) Weekend price: " << weekendPrice;
+        std::cout << "\n\t3) Holiday price: " << holidayPrice;
+        std::cout << "\n\t4) Standard room price: " << standardPrice;
+        std::cout << "\n\t5) Penthouse price: " << penthousePrice;
+        std::cout << "\n\t6) Luxury room price: " << luxuryPrice;
+
+        std::cout << "\n\n7) Return \n";
+
+        std::cout << "\nYour choice: ";
+
+        std::cin >> task;
+
+        std::cout << "New price: ";
+
+        if (task == 1)
+            std::cin >> defaultPrice;
+        else if (task == 2)
+            std::cin >> weekendPrice;
+        else if (task == 3)
+            std::cin >> holidayPrice;
+        else  if (task == 4)
+            std::cin >> standardPrice;
+        else if (task == 5)
+            std::cin >> penthousePrice;
+        else if (task == 6)
+            std::cin >> luxuryPrice;
+        else if (task == 7)
+            break;
+        
+        system("cls");
     }
-    return false;
-   
-}
-
-int CEO::setPrices(const std::string& dateStr, std::string roomType) {
-
-	// Wczytanie dat œwi¹t z pliku
-	std::vector<std::tm> holidays = readHolidays();
-
-    std::tm date = {};
-    std::istringstream iss(dateStr);
-    char delimiter;
-    if (!(iss >> date.tm_year >> delimiter >> date.tm_mon >> delimiter >> date.tm_mday) || delimiter != '-') {
-        std::cout << "B³¹d podczas przetwarzania daty." << std::endl;
-        return -1.0; // Zwracamy wartoœæ ujemn¹ jako sygna³ b³êdu
-    }
-
-    // Korekta roku i miesi¹ca, poniewa¿ std::tm oczekuje, ¿e rok to rok od 1900, a miesi¹ce s¹ numerowane od 0
-    date.tm_year -= 1900;
-    date.tm_mon--;
-    std::mktime(&date);
-
-    // Domyœlne ceny
-    float base_price = 100.0;
-    float weekend_price = 120.0;
-    float holiday_price = 150.0;
-
-    // Sprawdzenie, czy to weekend
-    bool is_weekend = false;
-    if(date.tm_wday == 0 || date.tm_wday == 6) // Niedziela (0) lub sobota (6)
-        is_weekend = true;
-    else
-        is_weekend = false;
-
-    // Sprawdzenie, czy to œwiêto
-    bool is_holiday = isHoliday(date, holidays);
-
-    // Ustalanie ceny na podstawie dnia tygodnia
-    float price;
-    if (is_holiday) {
-        price = holiday_price;
-    }
-    else if (is_weekend) {
-        price = weekend_price;
-    }
-    else {
-        price = base_price;
-    }
-
-    if (roomType == "S")
-        return price + 100; // Cena za standardowy pokój
-    else if (roomType == "P")
-        return  price + 300; // Cena za penthouse
-    else if (roomType == "L")
-        return  price + 500; // Cena za luxury
-    else
-    {
-        std::cout << "Unknown room type!!!" << std::endl;
-        return 0;   // Nieznany typ pokoju
-    }
+    
+    
 }

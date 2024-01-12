@@ -3,14 +3,23 @@
 void Reception::editReserv() {
 
 	int task;
-	std::cout << "What do you want to do? 1 - Make new reservation, 2 - Edit existing reservation: ";
-	std::cin >> task;
-	if (task == 1)
-		makeReservation();
-	else if (task == 2)
-		editReservation();
-	else
-		std::cout << "Wrong task number";
+	while (true)
+	{
+		cout << "What do you want to do?\n\n";
+		cout << "\t1) Make new reservation\n";
+		cout << "\t2) Edit existing reservation\n\n";
+		cout << "3) Return\n\n";
+		cout << "Your choice: ";
+		cin >> task;
+		if (task == 1)
+			makeReservation();
+		else if (task == 2)
+			editReservation();
+		else if (task == 3)
+			break;
+		else
+			cout << "Wrong task number";
+	}
 }
 
 void Reception::editWebsite() {

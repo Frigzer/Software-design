@@ -1,3 +1,4 @@
-Adam 123
-Wojtek 12
-
+klient 12 Client
+recepcja 33 Reception
+admin 40 Menager
+ceo 1234 CEO
