@@ -2,7 +2,7 @@
 
 void Reception::editReserv() {
 
-	int task;
+	string task;
 	while (true)
 	{
 		cout << "What do you want to do?\n\n";
@@ -11,32 +11,58 @@ void Reception::editReserv() {
 		cout << "3) Return\n\n";
 		cout << "Your choice: ";
 		cin >> task;
-		if (task == 1)
+		if (task == "1")
 			makeReservation();
-		else if (task == 2)
+		else if (task == "2")
 			editReservation();
-		else if (task == 3)
+		else if (task == "3")
 			break;
 		else
-			cout << "Wrong task number";
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Wrong task number, try again" << endl;
+			system("pause");
+		}
+			
 	}
 }
 
 void Reception::editWebsite() {
-	std::string newEvent;
-	std::cout << "Adding new event: ";
-
-	website.eventCalendar.push_back(newEvent);
-
-	// Tylko pingujemy "stronê" i sprawdzamy czy jest po³¹czenie
-	/*
-	int x = system("ping 127.0.0.1");
-	if (x == 0) {
-		std::cout << "success";
+	string newEvent;
+	int task;
+	while (true)
+	{
+		system("cls");
+		cout << "Event list:\n";
+		for (int i = 0; i < website.eventCalendar.size(); i++)
+		{
+			cout << "\t" << website.eventCalendar[i] << endl;
+		}
+		cout << endl;
+		
+		cout << "\t1) Add new event\n\n ";
+		cout << "2) Return\n\n";
+		cout << "Your choice: ";
+		cin >> task;
+		if (task == 1)
+		{
+			cout << "Enter event content: ";
+			cin.ignore();
+			getline(cin, newEvent);
+			website.eventCalendar.push_back(newEvent);
+		}
+		else if (task == 2)
+			break;
+		else
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Wrong task number, try again" << endl;
+			system("pause");
+			continue;
+		}
 	}
-	else {
-		std::cout << "failed";
-	}*/
 }
 
 void Reception::accesOccupancyRegistry() {
@@ -54,4 +80,6 @@ void Reception::accesOccupancyRegistry() {
 		}
 		cout << "|" << OCCUPANCY[i]->date << endl;
 	}
+	cout << "\n\n";
+	system("pause");
 }
