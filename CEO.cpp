@@ -36,6 +36,13 @@ void CEO::setPrices() {
             std::cin >> luxuryPrice;
         else if (task == 7)
             break;
+        else
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Wrong task number, try again\n";
+            system("pause");
+        }
         
         system("cls");
     }
