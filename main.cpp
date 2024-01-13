@@ -1,8 +1,6 @@
 #include "Client.h"
 #include "CEO.h"
 
-#include "predictPrices.h"
-
 int main()
 {
 	bool backToLoginAsClient = false;
@@ -58,7 +56,10 @@ int main()
 				}
 				else
 				{
-					cout << "Wrong task number!!!";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					cout << "Wrong task number!!!, try again\n";
+					system("pause");
 					backToChoiceSelectionAsClient = true;
 				}
 			}
@@ -122,7 +123,10 @@ int main()
 				}
 				else
 				{
-					cout << "Wrong task number!!!";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					cout << "Wrong task number!!!, try again\n";
+					system("pause");
 					backToChoiceSelectionAsReception = true;
 				}
 			}
@@ -201,7 +205,10 @@ int main()
 				}
 				else
 				{
-					cout << "Wrong task number!!!";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					cout << "Wrong task number!!!, try again\n";
+					system("pause");
 					backToChoiceSelectionAsMenager = true;
 				}
 			}
@@ -286,7 +293,10 @@ int main()
 				}
 				else
 				{
-					cout << "Wrong task number!!!";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					cout << "Wrong task number!!!, try again\n";
+					system("pause");
 					backToChoiceSelectionAsCEO = true;
 				}
 			}
@@ -312,16 +322,12 @@ int main()
 			return 0;
 		else
 		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			cout << "Wrong role number!!!, try again\n";
 			system("pause");
 			system("cls");
 		}
 			
 	}
-	//CEO dyrektor;
-	//dyrektor.menageWorkers();
-
-	//test.menageWorkers();
-	//test.menageWorkers();
-	//test.menageWorkers("Adam");
 }
