@@ -125,7 +125,6 @@ bool Menager::writeToFile()
 
 Menager::Menager()
 {
-
 	getFromFile();
 }
 
@@ -136,49 +135,73 @@ Menager::~Menager()
 
 void Menager::menageWorkers()
 {
-	
-	int task;
-	cout << "What would you like to do?\n\n";
-	cout << "\t1) Add new worker\n";
-	cout << "\t2) Change workers salary\n";
-	cout << "\t3) Change workers review\n";
-	cout << "\t4) Delete worker\n\n";
-	cout << "5) Return\n";
-	cout << "\nInput task number: ";
-	cin >> task;
-	if (task == 1)
-		addWorker();
-	else if (task == 2)
-		changeWorkerSalary();
-	else if (task == 3)
-		changeWorkerReview();
-	else if (task == 4)
-		deleteWorker();
-	else if (task == 5)
-		exit;
-	else
+	while (true)
 	{
-		std::cout << "Wrong task number, Try again" << std::endl;
-		system("pause");
 		system("cls");
-		menageWorkers();
+		int task;
+		cout << "What would you like to do?\n\n";
+		cout << "\t1) Add new worker\n";
+		cout << "\t2) Change workers salary\n";
+		cout << "\t3) Change workers review\n";
+		cout << "\t4) Delete worker\n\n";
+		cout << "5) Return\n";
+		cout << "\nInput task number: ";
+		cin >> task;
+		if (task == 1)
+			addWorker();
+		else if (task == 2)
+			changeWorkerSalary();
+		else if (task == 3)
+			changeWorkerReview();
+		else if (task == 4)
+			deleteWorker();
+		else if (task == 5)
+			break;
+		else
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Wrong task number, Try again" << std::endl;
+			system("pause");		
+		}
 	}
-		
-	
+
 }
 
 void Menager::editWebpage() {
-
-	cout << "Changing hotel info: ";
-	cin >> website.hotelInfo;
-
-	/*
-	// Tylko pingujemy "stronê" i sprawdzamy czy jest po³¹czenie
-	int x = system("ping 127.0.0.1");
-	if (x == 0) {
-		std::cout << "success";
+	int task = 0;
+	while (true)
+	{
+		system("cls");
+		if (website.hotelInfo != "")
+		{
+			cout << "Current hotel info: ";
+			cout << website.hotelInfo;
+			cout << "\n\n";
+		}
+		cout << "What do you want to do?\n\n";
+		if (website.hotelInfo != "")
+			cout << "\t1) Change hotel info\n\n";
+		else
+			cout << "\t1) Add hotel info\n\n";
+		cout << "2) Return\n\n";
+		cout << "Your choice: ";
+		cin >> task;
+		if (task == 1)
+		{
+			cout << "New hotel info: ";
+			cin.ignore();
+			getline(cin, website.hotelInfo);
+			
+		}
+		else if (task == 2)
+			break;
+		else
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Wrong task number, try again\n";
+			system("pause");
+		}
 	}
-	else {
-		std::cout << "failed";
-	}*/
 }
