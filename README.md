@@ -1,5 +1,1 @@
-Pioter - reservation, resrevationWraper, MakeReservation, , occupancy registry
-
-Adam - User, Client, Reception, Menager, CEO, workers, predictPrices
-
-Radek -  websiteData
+This project was originally developed in collaboration with [pbaranski03](https://github.com/pbaranski03), but is now maintained independently.
